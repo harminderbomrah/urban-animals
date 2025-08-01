@@ -1,0 +1,91 @@
+
+.ua-header {
+  width: 100%;
+  background: #fff;
+  color: #222;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 1.5rem 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.ua-header.scrolled {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.ua-header.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.ua-header__nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  font-size: 0.9rem;
+  padding: 0 2rem 1.5rem;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.ua-header__nav a {
+  color: #222;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  position: relative;
+  padding: 0.2em 0;
+  transition: color 0.3s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.ua-header__nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #222;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+.ua-header__nav a:hover {
+  color: #000;
+}
+
+.ua-header__nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.ua-header__cart {
+  font-weight: normal !important;
+  color: #666 !important;
+}
+
+.ua-header__cart:hover::after {
+  transform: scaleX(0) !important;
+}
+
+.ua-header__title {
+  font-family: 'EB Garamond', 'Georgia', serif;
+  font-size: 2.8rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  color: #000;
+  transition: opacity 0.3s ease;
+}
+
+.ua-header__title:hover {
+  opacity: 0.8;
+}

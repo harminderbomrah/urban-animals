@@ -1,0 +1,99 @@
+
+.ua-gallery {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  padding: 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.ua-gallery__item {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  cursor: pointer;
+  background: #f8f8f8;
+  transition: opacity 0.4s ease;
+}
+
+.ua-gallery__item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0);
+  z-index: 1;
+  transition: background 0.4s ease;
+}
+
+.ua-gallery__item:hover::before {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.ua-gallery__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.0001); /* Prevents initial blur in some browsers */
+  transition: transform 0.7s cubic-bezier(0.2, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.ua-gallery__item:hover img {
+  transform: scale(1.04);
+}
+
+.ua-gallery__caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem 1.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  color: #000;
+  font-family: 'EB Garamond', serif;
+  font-size: 1.25rem;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: all 0.5s cubic-bezier(0.2, 0, 0.2, 1);
+  z-index: 2;
+}
+
+.ua-gallery__item:hover .ua-gallery__caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Loading state */
+.ua-gallery__item.loading {
+  animation: imageFadeIn 0.5s ease forwards;
+}
+
+@keyframes imageFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .ua-gallery {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem;
+  }
+}
+
+/* Hover effect for devices that support hover */
+@media (hover: hover) {
+  .ua-gallery__item {
+    opacity: 0.95;
+  }
+  
+  .ua-gallery__item:hover {
+    opacity: 1;
+  }
+}
